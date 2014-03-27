@@ -23,7 +23,8 @@ public class SimulatorPanel extends JPanel {
 
 		this.simulator = simulator;
 
-		timer = new Timer(1000 / 60, simulatorUpdater);
+		timer = new Timer((int) Math.round(1000.0 / Launcher.FPS),
+				simulatorUpdater);
 		timer.start();
 	}
 

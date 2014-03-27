@@ -10,7 +10,7 @@ public class Person {
 
 	public boolean showTrail = false;
 	public Vector<Point2D.Double> trail = new Vector<Point2D.Double>();
-	public int trailPrecision = 10;
+	public int trailPrecision = 5;
 
 	public Person(int x, int y, int radius) {
 		position.x = x;

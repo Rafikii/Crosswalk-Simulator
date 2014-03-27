@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 import java.awt.BorderLayout;
 
@@ -18,6 +19,12 @@ public class Window {
 	public Window() {
 		frame.setTitle("Crosswalk Simulator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			System.out.println("Error initiating the frame\n");
+		}
 
 		// set size
 		frame.setSize(700, 500);

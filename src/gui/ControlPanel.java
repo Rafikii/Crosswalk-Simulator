@@ -106,7 +106,9 @@ public class ControlPanel extends JPanel {
 		timerSlider.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				timer.setDelay(1000 / (60 * timerSlider.getValue() / 10));
+				if (timerSlider.getValue() != 0)
+					timer.setDelay((int) Math.round(1000.0 / (Launcher.FPS
+							* timerSlider.getValue() / 10)));
 			}
 		});
 	}
