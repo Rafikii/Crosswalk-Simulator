@@ -13,6 +13,7 @@ import logic.Simulator;
 public class Window {
 	private JFrame frame = new JFrame();
 	private JPanel simulatorPanel;
+	private ControlPanel controlPanel;
 	private Simulator simulator;
 
 	public Window() {
@@ -20,7 +21,7 @@ public class Window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// set size
-		frame.setSize(500, 500);
+		frame.setSize(700, 500);
 
 		// set location
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -31,6 +32,10 @@ public class Window {
 		simulator = new Simulator();
 		simulatorPanel = new SimulatorPanel(simulator);
 		frame.getContentPane().add(simulatorPanel, BorderLayout.CENTER);
+
+		// adding controls panel
+		controlPanel = new ControlPanel(simulator);
+		frame.getContentPane().add(controlPanel, BorderLayout.EAST);
 	}
 
 	public void start() {
