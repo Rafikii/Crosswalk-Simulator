@@ -15,8 +15,8 @@ import logic.Simulator;
 
 public class SimulatorPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private Simulator simulator;
-	private Timer timer;
+	public Simulator simulator;
+	public Timer timer;
 
 	public SimulatorPanel(Simulator simulator) {
 		setBackground(Color.BLACK);
@@ -31,6 +31,15 @@ public class SimulatorPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			simulator.update();
+
+			if (simulator.rafiki.position.x + simulator.rafiki.radius > getWidth()
+					|| simulator.rafiki.position.x - simulator.rafiki.radius < 0)
+				simulator.rafiki.speed.x = -simulator.rafiki.speed.x;
+
+			if (simulator.rafiki.position.y + simulator.rafiki.radius > getHeight()
+					|| simulator.rafiki.position.y - simulator.rafiki.radius < 0)
+				simulator.rafiki.speed.y = -simulator.rafiki.speed.y;
+
 			repaint();
 		}
 	};
@@ -58,12 +67,14 @@ public class SimulatorPanel extends JPanel {
 						(int) person.trail.get(i).y);
 		}
 
-		g2d.setColor(Color.YELLOW);
-		g2d.draw(new Ellipse2D.Double(person.position.x - person.radius / 2,
-				person.position.y - person.radius / 2, person.radius,
-				person.radius));
-		g2d.fill(new Ellipse2D.Double(person.position.x - person.radius / 2,
-				person.position.y - person.radius / 2, person.radius,
-				person.radius));
+		if (person.radius != 0) {
+			g2d.setColor(Color.YELLOW);
+			g2d.draw(new Ellipse2D.Double(person.position.x - person.radius,
+					person.position.y - person.radius, person.radius * 2,
+					person.radius * 2));
+			g2d.fill(new Ellipse2D.Double(person.position.x - person.radius,
+					person.position.y - person.radius, person.radius * 2,
+					person.radius * 2));
+		}
 	}
 }

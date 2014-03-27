@@ -35,6 +35,7 @@ public class Person {
 
 	public void incSpeed() {
 		speed.x++;
+		speed.y++;
 	}
 
 	public void showHideTrail() {

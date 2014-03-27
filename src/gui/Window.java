@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 
@@ -12,7 +11,7 @@ import logic.Simulator;
 
 public class Window {
 	private JFrame frame = new JFrame();
-	private JPanel simulatorPanel;
+	private SimulatorPanel simulatorPanel;
 	private ControlPanel controlPanel;
 	private Simulator simulator;
 
@@ -34,7 +33,7 @@ public class Window {
 		frame.getContentPane().add(simulatorPanel, BorderLayout.CENTER);
 
 		// adding controls panel
-		controlPanel = new ControlPanel(simulator);
+		controlPanel = new ControlPanel(simulatorPanel);
 		frame.getContentPane().add(controlPanel, BorderLayout.EAST);
 	}
 
