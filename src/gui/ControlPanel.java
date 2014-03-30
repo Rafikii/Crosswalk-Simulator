@@ -88,9 +88,11 @@ public class ControlPanel extends JPanel {
 	private void setupTimerSliderPanel() {
 		timerPanel = new JPanel();
 		controls.add(timerPanel);
+		timerPanel.setLayout(new BorderLayout(0, 0));
 
 		timerSliderLabel = new JLabel("Time Multiplier");
-		timerPanel.add(timerSliderLabel);
+		timerSliderLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		timerPanel.add(timerSliderLabel, BorderLayout.NORTH);
 
 		timerSlider = new JSlider();
 		timerSlider.setSnapToTicks(true);
@@ -99,8 +101,8 @@ public class ControlPanel extends JPanel {
 		timerSlider.setMinorTickSpacing(5);
 		timerSlider.setPaintTicks(true);
 		timerSlider.setValue(10);
-		timerSlider.setMaximum(40);
-		timerPanel.add(timerSlider);
+		timerSlider.setMaximum(80);
+		timerPanel.add(timerSlider, BorderLayout.CENTER);
 		timerSlider.setFocusable(false);
 
 		timerSlider.addChangeListener(new ChangeListener() {
